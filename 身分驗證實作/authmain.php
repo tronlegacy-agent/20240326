@@ -7,7 +7,11 @@ if(isset($_POST['userid']) && isset($_POST['password']))
   $userid = $_POST['userid'];
   $password = $_POST['password'];
   //連線 db 進入
-  $db_conn = new mysqli('localhost','webauth','webauth','auth');
+  // $db_host = "localhost";
+  // $db_useranme = "root";
+  // $db_password = "";
+  // $database = "auth";
+  $db_conn = new mysqli("localhost","root","","auth");
 
   if(mysqli_connect_errno())//回傳 最後一次連線程式碼錯誤
   {
@@ -15,7 +19,7 @@ if(isset($_POST['userid']) && isset($_POST['password']))
     exit();
   }
 
-  $query = "select * from authorized_users where name='".$userid."' and passwor=shal('".$password."')";
+  $query = "select * from authorized_users where name='".$userid."' and password=shal('".$password."')";
 
   $result = $db_conn->query($query);
   if($result->num_rows > 0)
@@ -51,11 +55,11 @@ if(isset($_POST['userid']) && isset($_POST['password']))
       }
 
       //提供表單登入
-      echo '<form action="authmain.php" method="post">';
+      echo '<form action="members_only.php" method="post">';
       echo '<fieldset>';
       echo '<legend>LOGIN NOW!</legend>';
       echo '<p><label for="userid">USERID:</label>';
-      echo '<input type="text" name="userid" id="userid" size="30"/></p>';
+      echo '<input type="text" ee="userid" id="userid" size="30"/></p>';
       echo '<p><label for="password">PASSWORD:</label>';
       echo '<input type="password" name="password" id="password" size="30"/></p>';
       echo '<fieldset>';
