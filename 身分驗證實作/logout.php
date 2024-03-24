@@ -2,7 +2,7 @@
 session_start();
 
 //儲存以測試他們是否已登入
-$old_user = $_SESSION['vaild_user'];
+$old_user = @$_SESSION['vaild_user'];
 unset($_SESSION['vaild_user']);
 session_destroy();
 ?>
