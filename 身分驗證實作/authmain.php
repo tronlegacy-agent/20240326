@@ -12,11 +12,11 @@
   <h1>HOME PAGE</h1>
   <?php
   $redirect = "authmain.php";
-  if(isset($_SESSION['vaild_user'])) {
-    echo '<p> YOU ARE LOGIN AS : ' . $_SESSION['vaild_user'] . '<br />';
+  if(isset($_SESSION['valid_user'])) {
+    echo '<p> YOU ARE LOGIN AS : ' . $_SESSION['valid_user'] . '<br />';
     echo '<a href="logout.php">LOGOUT<a/></p>';
   } else {
-    if (isset($userid)) {
+    if (isset($account)) {
       //如果他們嘗試登入失敗
       echo '<p>COULD NOT LOG YOU IN.</p>';
     } else {
@@ -26,11 +26,11 @@
     }
   }
   ?>
-  <form action="members_only.php" method="post">
+  <form action="./members_only.php" method="post">
     <fieldset>
       <legend>LOGIN NOW!</legend>
-      <p><label for="userid">USERID:</label>
-        <input type="text" ee="userid" id="userid" size="30" />
+      <p><label for="account">USER_ID:</label>
+        <input type="text" name="account" id="account" size="30" />
       </p>
       <p><label for="password">PASSWORD:</label>
         <input type="password" name="password" id="password" size="30" />
